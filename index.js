@@ -1,13 +1,25 @@
 // Create a prompt for user to enter froyo flavors 
+const userInputString = prompt(
+    "Please enter a list of froyo flavors.",
+    // "chocolate,chocolate,vanilla,coffee"
+);
 
-// Parse user input into an array of froyo flavors 
+function createOrderObject(str) {
 
-// Build an object to track which flavors you've observed
+const stringArray = str.split(",");
 
-// Create a loop to iterate through the array of flavors 
+const order = {};
+for (let i = 0; i < stringArray.length; i++) {
+    if(stringArray[i] in order) {
+        order[stringArray[i]] += 1;
+    }
+        else {
+            order[stringArray[i]] = 1;
+        }
+    }
+    return order;
+}
 
-// Build an object to keep count of how many orders there are of each flavor
+const newOrder = createOrderObject(userInputString);
 
-// Ensure the program correctly counts the # of each flavor in user's input
-
-// Console output changes depending on the user's input 
+console.table(newOrder);
